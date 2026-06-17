@@ -3,6 +3,40 @@
 @tailwind utilities;
 
 @layer base {
+  /*
+   * Theme tokens — values mirror the reference design.
+   * Stored as space-separated RGB channels so Tailwind's `<alpha-value>`
+   * opacity modifiers (e.g. bg-bg/85, text-cream/60) keep working.
+   * Dark mode is the default (:root); light mode overrides via [data-theme="light"].
+   * Accent colours (copper / gold / sage / terracotta) are identical in both
+   * themes, so they stay as static hex in the Tailwind config.
+   */
+  :root {
+    --c-bg: 15 15 14; /* #0F0F0E */
+    --c-bg-elevated: 26 25 23; /* #1A1917 */
+    --c-bg-card: 34 33 30; /* #22211E */
+    --c-surface: 44 43 39; /* #2C2B27 */
+    --c-cream: 245 240 235; /* #F5F0EB */
+    --c-cream-muted: 217 210 202; /* #D9D2CA */
+    --c-ink: 245 240 235; /* #F5F0EB */
+    --c-ink-muted: 156 151 137; /* #9C9789 */
+    --c-ink-subtle: 107 103 94; /* #6B675E */
+    --noise-opacity: 0.025;
+  }
+
+  [data-theme="light"] {
+    --c-bg: 248 246 243; /* #F8F6F3 */
+    --c-bg-elevated: 239 236 230; /* #EFECE6 */
+    --c-bg-card: 255 255 255; /* #FFFFFF */
+    --c-surface: 229 224 216; /* #E5E0D8 */
+    --c-cream: 26 24 22; /* #1A1816 — inverted for text */
+    --c-cream-muted: 61 59 55; /* #3D3B37 */
+    --c-ink: 45 43 40; /* #2D2B28 */
+    --c-ink-muted: 107 103 94; /* #6B675E */
+    --c-ink-subtle: 143 139 130; /* #8F8B82 */
+    --noise-opacity: 0.015;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
@@ -11,6 +45,9 @@
   body {
     @apply bg-bg text-cream font-body antialiased;
     overflow-x: hidden;
+    transition:
+      background-color 0.4s ease,
+      color 0.4s ease;
   }
 
   ::selection {
@@ -23,10 +60,10 @@
     width: 7px;
   }
   ::-webkit-scrollbar-track {
-    background: #0f0f0e;
+    background: rgb(var(--c-bg));
   }
   ::-webkit-scrollbar-thumb {
-    background: #2c2b27;
+    background: rgb(var(--c-surface));
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
@@ -44,8 +81,14 @@
     @apply bg-gradient-to-br from-copper-light to-gold bg-clip-text text-transparent;
   }
 
+  /* Themeable cream → copper gradient (logos, headings on themed backgrounds) */
   .text-gradient-cream {
     @apply bg-gradient-to-br from-cream to-copper-light bg-clip-text text-transparent;
+  }
+
+  /* Fixed-light variant for text that always sits over dark imagery */
+  .text-gradient-light {
+    @apply bg-gradient-to-br from-[#F5F0EB] to-copper-light bg-clip-text text-transparent;
   }
 
   /* Card with a subtle gradient hairline border */
@@ -87,7 +130,7 @@
     inset: 0;
     z-index: 9998;
     pointer-events: none;
-    opacity: 0.025;
+    opacity: var(--noise-opacity);
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 

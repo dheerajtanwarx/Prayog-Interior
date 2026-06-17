@@ -58,7 +58,7 @@ export function Hero() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="mt-5 font-display text-[clamp(2.8rem,6.5vw,5.5rem)] font-normal leading-[1.05] tracking-[-0.02em] text-cream drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]"
+          className="mt-5 font-display text-[clamp(2.8rem,6.5vw,5.5rem)] font-normal leading-[1.05] tracking-[-0.02em] text-[#F5F0EB] drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]"
         >
           Designing spaces
           <br />
@@ -70,7 +70,7 @@ export function Hero() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="mt-6 max-w-xl text-[clamp(0.9rem,1.1vw,1.05rem)] leading-relaxed text-cream/90 drop-shadow"
+          className="mt-6 max-w-xl text-[clamp(0.9rem,1.1vw,1.05rem)] leading-relaxed text-[#F5F0EB]/90 drop-shadow"
         >
           Prayog Interiors crafts functional, aesthetically balanced interiors —
           from luxury retail and hospitality to refined residential homes. Every
@@ -88,7 +88,7 @@ export function Hero() {
             View Our Work
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </Button>
-          <Button href="/#about" variant="outline">
+          <Button href="/#about" variant="outline" onDark>
             Our Philosophy
           </Button>
         </motion.div>
@@ -102,10 +102,10 @@ export function Hero() {
         >
           {site.stats.map((stat) => (
             <div key={stat.label}>
-              <dt className="font-display text-[clamp(1.8rem,3vw,2.5rem)] font-medium text-gradient-cream">
+              <dt className="font-display text-[clamp(1.8rem,3vw,2.5rem)] font-medium text-gradient-light">
                 {stat.value}
               </dt>
-              <dd className="mt-1 text-[0.72rem] uppercase tracking-[0.1em] text-cream/60">
+              <dd className="mt-1 text-[0.72rem] uppercase tracking-[0.1em] text-[#F5F0EB]/60">
                 {stat.label}
               </dd>
             </div>

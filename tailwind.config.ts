@@ -5,13 +5,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Design tokens distilled from the reference design
+        // Themeable tokens — driven by CSS variables (see globals.css).
+        // Channel format keeps Tailwind's /<alpha-value> opacity modifiers working.
         bg: {
-          DEFAULT: "#0F0F0E",
-          elevated: "#1A1917",
-          card: "#22211E",
+          DEFAULT: "rgb(var(--c-bg) / <alpha-value>)",
+          elevated: "rgb(var(--c-bg-elevated) / <alpha-value>)",
+          card: "rgb(var(--c-bg-card) / <alpha-value>)",
         },
-        surface: "#2C2B27",
+        surface: "rgb(var(--c-surface) / <alpha-value>)",
+        cream: {
+          DEFAULT: "rgb(var(--c-cream) / <alpha-value>)",
+          muted: "rgb(var(--c-cream-muted) / <alpha-value>)",
+        },
+        ink: {
+          DEFAULT: "rgb(var(--c-ink) / <alpha-value>)",
+          muted: "rgb(var(--c-ink-muted) / <alpha-value>)",
+          subtle: "rgb(var(--c-ink-subtle) / <alpha-value>)",
+        },
+        // Accent colours — identical across both themes (static hex).
         copper: {
           DEFAULT: "#C17F59",
           light: "#D4A07A",
@@ -26,15 +37,6 @@ const config: Config = {
           DEFAULT: "#8A9A7B",
           light: "#A7B89A",
           dark: "#6B7A5E",
-        },
-        cream: {
-          DEFAULT: "#F5F0EB",
-          muted: "#D9D2CA",
-        },
-        ink: {
-          DEFAULT: "#F5F0EB",
-          muted: "#9C9789",
-          subtle: "#6B675E",
         },
       },
       fontFamily: {

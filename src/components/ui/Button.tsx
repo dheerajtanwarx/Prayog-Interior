@@ -7,10 +7,11 @@ const base =
   "group relative inline-flex items-center justify-center gap-2 rounded-full text-[0.78rem] font-medium uppercase tracking-[0.1em] transition-all duration-500 ease-out-expo focus:outline-none focus-visible:ring-2 focus-visible:ring-copper/60 focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
 const variants: Record<Variant, string> = {
+  // Primary always uses light text — it sits on the copper gradient in both themes.
   primary:
-    "bg-gradient-to-br from-copper to-terracotta px-8 py-4 text-cream shadow-[0_4px_24px_rgba(193,127,89,0.25)] hover:-translate-y-0.5 hover:shadow-[0_8px_40px_rgba(193,127,89,0.4)]",
+    "bg-gradient-to-br from-copper to-terracotta px-8 py-4 text-[#F5F0EB] shadow-[0_4px_24px_rgba(193,127,89,0.25)] hover:-translate-y-0.5 hover:shadow-[0_8px_40px_rgba(193,127,89,0.4)]",
   outline:
-    "border border-copper/70 bg-copper/10 px-8 py-4 text-cream hover:-translate-y-0.5 hover:border-copper-light hover:bg-copper/25 hover:tracking-[0.16em] hover:shadow-[0_6px_30px_rgba(193,127,89,0.15)]",
+    "border border-copper/70 bg-copper/10 px-8 py-4 hover:-translate-y-0.5 hover:border-copper-light hover:bg-copper/25 hover:tracking-[0.16em] hover:shadow-[0_6px_30px_rgba(193,127,89,0.15)]",
   glow: "overflow-hidden bg-bg px-9 py-[1.1rem] text-cream",
 };
 
@@ -18,6 +19,8 @@ interface CommonProps {
   variant?: Variant;
   children: ReactNode;
   className?: string;
+  /** Force light text for the outline variant when placed over dark imagery */
+  onDark?: boolean;
 }
 
 type ButtonAsLink = CommonProps & { href: string } & Omit<
@@ -30,8 +33,10 @@ type ButtonAsButton = CommonProps & { href?: undefined } & Omit<
   >;
 
 export function Button(props: ButtonAsLink | ButtonAsButton) {
-  const { variant = "primary", children, className = "", ...rest } = props;
-  const classes = `${base} ${variants[variant]} ${className}`;
+  const { variant = "primary", children, className = "", onDark, ...rest } = props;
+  const outlineText =
+    variant === "outline" ? (onDark ? "text-[#F5F0EB]" : "text-cream") : "";
+  const classes = `${base} ${variants[variant]} ${outlineText} ${className}`;
 
   const inner =
     variant === "glow" ? (

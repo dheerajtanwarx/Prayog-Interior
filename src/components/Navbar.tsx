@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { navLinks, site } from "@/data/site";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -60,6 +61,8 @@ export function Navbar() {
           >
             Start a Project
           </Link>
+
+          <ThemeToggle />
 
           <button
             type="button"

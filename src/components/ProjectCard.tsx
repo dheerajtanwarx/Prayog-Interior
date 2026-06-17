@@ -29,8 +29,8 @@ export function ProjectCard({ project, featured = false, priority = false }: Pro
         />
       </div>
 
-      {/* gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/10 to-bg/20 transition-colors duration-500 group-hover:from-bg/95" />
+      {/* gradient overlay — fixed dark for legibility of light text in both themes */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F0E]/90 via-[#0F0F0E]/10 to-[#0F0F0E]/20 transition-colors duration-500 group-hover:from-[#0F0F0E]/95" />
 
       {/* arrow chip */}
       <span className="absolute right-5 top-5 flex h-12 w-12 translate-x-2 translate-y-[-8px] items-center justify-center rounded-full border border-copper/20 bg-copper/10 text-copper-light opacity-0 backdrop-blur transition-all duration-500 ease-out-expo group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100">
@@ -46,13 +46,13 @@ export function ProjectCard({ project, featured = false, priority = false }: Pro
             {project.projectType}
           </span>
         </div>
-        <h3 className="mb-2 font-display text-[clamp(1.3rem,2.5vw,1.8rem)] font-medium text-cream">
+        <h3 className="mb-2 font-display text-[clamp(1.3rem,2.5vw,1.8rem)] font-medium text-[#F5F0EB]">
           {project.title}
         </h3>
-        <p className="mb-3 max-w-md text-[0.85rem] leading-relaxed text-cream/85">
+        <p className="mb-3 max-w-md text-[0.85rem] leading-relaxed text-[#F5F0EB]/85">
           {project.excerpt}
         </p>
-        <span className="inline-flex items-center gap-1.5 text-[0.72rem] uppercase tracking-[0.1em] text-ink-muted">
+        <span className="inline-flex items-center gap-1.5 text-[0.72rem] uppercase tracking-[0.1em] text-[#F5F0EB]/60">
           <MapPin size={13} /> {project.location}
         </span>
       </div>

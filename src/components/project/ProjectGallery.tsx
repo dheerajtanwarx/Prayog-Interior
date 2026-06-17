@@ -37,12 +37,12 @@ export function ProjectGallery({ images }: { images: GalleryImage[] }) {
                 className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-110"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-bg/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-            <span className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-copper/20 bg-bg/50 text-copper-light opacity-0 backdrop-blur transition-opacity duration-500 group-hover:opacity-100">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F0E]/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <span className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-copper/20 bg-[#0F0F0E]/50 text-copper-light opacity-0 backdrop-blur transition-opacity duration-500 group-hover:opacity-100">
               <Expand size={16} />
             </span>
             {image.caption && (
-              <span className="absolute inset-x-0 bottom-0 translate-y-2 p-4 text-left text-sm text-cream opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              <span className="absolute inset-x-0 bottom-0 translate-y-2 p-4 text-left text-sm text-[#F5F0EB] opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                 {image.caption}
               </span>
             )}

@@ -14,7 +14,7 @@ export function CTASection() {
           sizes="100vw"
           className="object-cover opacity-15"
         />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0F0F0E_75%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgb(var(--c-bg))_75%)]" />
       </div>
 
       <Reveal direction="none" className="container-px relative z-10 mx-auto max-w-2xl text-center">
